@@ -14,15 +14,12 @@
 ```
 
 ```
-The permissions passed as an argument to chmod are specified as an octal value. 
-Each numeral in the value represents three bits. If three numerals are given, 
-you're setting the read, write and execute bits for the file's owner, group and 
-others (everyone else). If four numerals are given, the leftmost number sets the
-setuid, setgid and sticky bits. Octal 1 sets the sticky bit. Octal 2 sets the setgid
+The permissions passed as an argument to chmod are specified as an octal value. Each numeral in the 
+value represents three bits. If three numerals are given, you're setting the read, write and execute 
+bits for the file's owner, group and others (everyone else). If four numerals are given, the leftmost
+number sets the setuid, setgid and sticky bits. Octal 1 sets the sticky bit. Octal 2 sets the setgid
 bit. Octal 2 + octal 1 is octal 3 which sets both the setgid bit and the sticky bit.
 ```
-
-资料来源：https://unix.stackexchange.com/questions/64126/why-does-chmod-1777-and-chmod-3777-both-set-the-sticky-bit
 
 
 
