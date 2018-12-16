@@ -1,10 +1,10 @@
-### 开源网络扫描系统 IVRE 搭建及功能测试
+## 开源网络扫描系统 IVRE 搭建及功能测试
 
 
 
 **实验环境**:  Kali Linux 虚拟机
 
-#### BASIS
+### BASIS
 
 - mkdir
 
@@ -26,7 +26,7 @@ bit. Octal 2 + octal 1 is octal 3 which sets both the setgid bit and the sticky 
 
 
 
-#### Step 0: 安装 docker 
+### Step 0: 安装 docker 
 
 首先 , 在命令行中查看虚拟机是否安装了 docker: 
 
@@ -50,7 +50,7 @@ apt-get install docker.io
 
 
 
-#### Step 1: 安装 IVRE
+### Step 1: 安装 IVRE
 
 官网上提供的安装方法：
 
@@ -109,7 +109,7 @@ docker attach ivreclient
 
 
 
-#### Step 2: IVRE 初始化
+### Step 2: IVRE 初始化
 
 根据 github 上的 [doc/](https://github.com/cea-sec/ivre/tree/master/doc) :
 
@@ -159,11 +159,11 @@ localhost
 
 
 
-#### Step 3: IVRE 部分功能测试
+### Step 3: IVRE 部分功能测试
 
 
 
-##### Flow analysis 
+#### Flow analysis 
 
 ![Flow_anasisly](image/Flow_anasisly.jpg)
 
@@ -229,7 +229,7 @@ ivre flowcli --count
 
 
 
-##### Nmap扫描
+#### Nmap扫描
 
 查看帮助信息`ivre runscans --help` , 显示如下:
 
@@ -318,7 +318,7 @@ ivre runscans --routable --limit 1000 --country CN --output=XMLFork
 ivre scan2db -c ROUTABLE,ROUTABLE-CN-001 -s Parrot -r /ivre-share/scans/COUNTRY-CN/up/
 ```
 
-扫描后的结果保存 /ivre-share/scans/COUNTRY-CN/up/ , cd 到目录简单地查看一下 ( 不知道为什么命令行中的输入显示不出来......): 
+扫描后的结果保存 `/ivre-share/scans/COUNTRY-CN/up/` , cd 到目录简单地查看一下 ( 不知道为什么命令行中的输入显示不出来......): 
 
 ![import_success](image/import_success.jpg)
 
@@ -338,7 +338,7 @@ cd 到最后, 会有一个 .xml 文件:
 
 
 
-#### 参阅
+### 参阅
 
 - [mkdir](https://unix.stackexchange.com/questions/64126/why-does-chmod-1777-and-chmod-3777-both-set-the-sticky-bit)
 
