@@ -6,7 +6,7 @@
 
 ### BASIS
 
-- mkdir
+- **mkdir**
 
 ```
  -m, --mode=MODE		set file mode (as in chmod), not a=rwx - umask
@@ -21,6 +21,16 @@ number sets the setuid, setgid and sticky bits. Octal 1 sets the sticky bit. Oct
 bit. Octal 2 + octal 1 is octal 3 which sets both the setgid bit and the sticky bit.
 ```
 
+                                                 
+- **Bro基础知识介绍**
+
+  - Bro不是多线程的，因此一旦到达单处理器核心的限制，唯一的选择就是将附在分摊到多核心或者多物理机上。簇部署就是针对这样大系统的场景设计的解决方案。伴随Bro的工具和脚本提供了易于管理许多Bro进程的结构来检查包处理相关动作，从而形成一个整体。
+  - Bro 架构
+  ![bro.png](image/bro.png)
+    - 前端:前端是一个分离的硬件设备或主机技术，能够将流量划分为许多的stream或flow。
+    - 管理端:管理端进程有两个主要任务，即从该簇的其他节点接收日志消息以及提示。其输出是一个单一的日志，你需要将某行为和后期处理相结合，你当然可以选择重复提示。管理端进程首先由BroControl启动，仅开放特定端口等待连接，他不会初始任何对其他簇的连接，一旦工作端启动并连接到管理端，日志和提示将开始从工作端抵达管理端进程。
+    - 代理端:管理同步状态的进程。变量能够跨进程自动同步。代理端帮助工作端，减轻工作端之间彼此的直连需求。
+    - 工作端:工作端嗅探网络流量并做协议分析。活动簇的绝大部分工作发生在工作端上，因此工作端需要最快的内存和CPU速度。但是其硬盘需求不大，因为日志直接发给了管理端。
 
 
 ### Step 0: 安装 docker 
@@ -85,6 +95,7 @@ docker pull ivre/web
 安装完成以后 , docker 开启 database service / web / client:
 
 ```
+docker run
 docker start ivredb
 docker start ivreweb
 docker start ivreclient
@@ -220,6 +231,9 @@ ivre bro2db *.log				// 查看导入的流量的统计数据
 ivre flowcli --count			
 ```
 
+使用 `bro -r` 会将数据流划分，并且分摊到多个 `worker`，每个 `worker` 结束工作后，都会得到一个自己所负责模块的 .log 文件，截图如下：
+![log](image/log.jpg)
+
 在浏览器中输入 http://localhost/flow.html : 
 
 ![Flow](image/Flow.jpg)
@@ -293,7 +307,7 @@ optional arguments:
                         select status of targets to scan again
 ```
 
-输入指令随机扫描 1000 个中国IP , 默认启用 30 个 Nmap 并行扫描:
+输入指令随机扫描 1000 个IP , 默认启用 30 个 Nmap 并行扫描:
 
 ```
 ivre runscans --routable --limit 1000 --country CN --output=XMLFork
