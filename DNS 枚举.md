@@ -406,7 +406,7 @@
 
     返回结果如下:
 
-    ![sort_diff](G:/net%20security/ns/end/image/sort_diff.jpg)
+    ![sort_diff](image/sort_diff.jpg)
 
     最后还是不明白它是这么分的 large.txt 和 small.txt ...... ( 后来发现这个目录是KALI 自带的 golismero 中的wordlist......)
 
