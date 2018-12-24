@@ -355,7 +355,7 @@
     cat /usr/share/perl5/Net/DNS/Question.pm -n 
     ```
 
-    ![dnsenum2](G:\net security\ns\end\image\dnsenum2.jpg)
+    ![dnsenum2](image/dnsenum2.jpg)
 
     这段代码不是很明白......
 
