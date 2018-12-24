@@ -8,13 +8,13 @@
   - 若缓存中没有, 就去调用 gethostbyname 库函数 (操作系统不同函数也不同) 进行查询
   - gethostbyname 函数在试图进行 DNS 解析之前首先检查域名是否在本地 Hosts 里
   - 若本地的 hosts 文件没有这个域名的缓存记录，且 gethostbyname 未找到，它会向 DNS 服务器发送一条 DNS 查询请求。
-  - 这时会有 DNS 服务器和请求主机是否在同一个局域网的问题，
+  - 接下来就是 DNS 查询的过程
 
 - **zone transfer 过程**
 
   ![zone_transfer](image/zone_transfer.png)
 
-  ​	[1]  目标服务器向源服务器发出查询SOA（起始授权机构，也就是在图2-2中所配置的“主服务器”）查询的请求。因为目标服务器总是区域的辅助服务器，不能自定义主要服务器。
+  ​	[1]  目标服务器向源服务器发出查询 SOA 查询的请求。因为目标服务器总是区域的辅助服务器，不能自定义主要服务器。
 
   ​	[2] 源服务器给出SOA查询请求应答，告诉目标服务器SOA中配置的主服务器地址，也就是SOA资源记录。
 
@@ -41,24 +41,24 @@
 
     46,600,000 并不代表 qq 有这么多子域名, 其中有很多重复的域名, 也包含一些泛解析子域名, 导致结果集如此庞大。
 
-- - 使用 theharvester 搜索
+  - 使用 theharvester 搜索
 
     ```
-           -d: Domain to search or company name
-           -b: data source: baidu, bing, bingapi, dogpile, google, googleCSE,
-                            googleplus, google-profiles, linkedin, pgp, twitter, vhost, 
-                            virustotal, threatcrowd, crtsh, netcraft, yahoo, all
-    
-           -s: Start in result number X (default: 0)
-           -v: Verify host name via dns resolution and search for virtual hosts
-           -f: Save the results into an HTML and XML file (both)
-           -n: Perform a DNS reverse query on all ranges discovered
-           -c: Perform a DNS brute force for the domain name
-           -t: Perform a DNS TLD expansion discovery
-           -e: Use this DNS server
-           -l: Limit the number of results to work with(bing goes from 50 to 50 results,
-                google 100 to 100, and pgp doesn't use this option)
-           -h: use SHODAN database to query discovered hosts
+       -d: Domain to search or company name
+       -b: data source: baidu, bing, bingapi, dogpile, google, googleCSE,
+                        googleplus, google-profiles, linkedin, pgp, twitter, vhost, 
+                        virustotal, threatcrowd, crtsh, netcraft, yahoo, all
+
+       -s: Start in result number X (default: 0)
+       -v: Verify host name via dns resolution and search for virtual hosts
+       -f: Save the results into an HTML and XML file (both)
+       -n: Perform a DNS reverse query on all ranges discovered
+       -c: Perform a DNS brute force for the domain name
+       -t: Perform a DNS TLD expansion discovery
+       -e: Use this DNS server
+       -l: Limit the number of results to work with(bing goes from 50 to 50 results,
+            google 100 to 100, and pgp doesn't use this option)
+       -h: use SHODAN database to query discovered hosts
     ```
 
     KALI 下 `theharvester` 的 `-b` 参数选择 `google` 时会报错, 这里选用 Bing。输入以下命令, 返回结果:
@@ -138,6 +138,10 @@
 - **DNS zone transfer (DNS 域传输) 利用**
 
   - dig 向 DNS 服务器发送 AXFR 请求(一般只能拷贝一级和二级 DNS 服务器内容):
+    
+    ```
+    dig @8.8.8.8 qq.com AXFR
+    ```
 
     ![dig](image/dig.jpg)
 
@@ -147,7 +151,7 @@
 
     查阅资料知 , 网络管理员禁止服务器接收来自未认证DNS服务器的AXFR请求 , 会导致 AXFR 请求失败。
 
-- - **使用在线网站进行 AXFR 请求**
+  - **使用在线网站进行 AXFR 请求**
 
     访问网站:
 
@@ -159,7 +163,9 @@
 
     ![zone_trans_test](image/zone_trans_test.jpg)
 
-    ​		AXFR 请求还是失败的。但是比在命令行中输入 dig 得到的信息更多: (1) 得到 ns1 ~ ns4 服务器信息 (2) 每次 axfr 请求都会有 n 个 severs found ( 比 dig 多一些...)
+    ​		AXFR 请求还是失败的。但是比在命令行中输入 dig 得到的信息更多: 
+    ​		(1) 得到 ns1 ~ ns4 name server 信息 
+    ​		(2) 每次 axfr 请求都会有 n 个 severs found ( 比 dig 多一些...)
 
     ​		总体上说 , AXFR 得到的信息比起之前的方法少了很多, 在该应用场景下并不是很合适。
 
@@ -167,7 +173,7 @@
 
 - **Cymon 查询域名**
 
-  ![cymon](image\cymon.jpg)
+  ![cymon](image/cymon.jpg)
 
 
 
@@ -232,7 +238,7 @@
 
     ![nslookup](image/nslookup.jpg)
 
-- - **dnsmap**
+  - **dnsmap**
 
     help 文档:
 
@@ -268,7 +274,7 @@
 
 
 
-- - **SubBrute** 
+  - **SubBrute** 
 
     KALI 并未自带 subbrute , 需要手动下载:
 
@@ -355,7 +361,7 @@
 
 
 
-- - **sublist3r**
+  - **sublist3r**
 
     sublist3r 在 KALI 中需要手动安装:
 
