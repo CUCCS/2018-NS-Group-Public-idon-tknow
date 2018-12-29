@@ -88,7 +88,7 @@
 
 - **HTTPS 证书透明度报告**
 
-  ​	Google透明度报告中的[证书透明度项目](https://transparencyreport.google.com/https/certificates)是用来解决HTTPS证书系统的结构性缺陷，它能够让所有人查询各个网站的HTTPS证书信息，从而能发现签发了证书的子域名。打开 google 输入网址:
+  -	Google透明度报告的[证书透明度项目](https://transparencyreport.google.com/https/certificates)是用来解决HTTPS证书系统的结构性缺陷，它能够让所有人查询各个网站的HTTPS证书信息，从而能发现签发了证书的子域名。打开 google 输入网址:
 
   ![google_trans](image/google_trans.jpg)
 
@@ -117,21 +117,21 @@
 
 
 
-- **crt.sh | Certificate Search**
+  - **crt.sh | Certificate Search**
 
-  ![crt.sh](image/crt.sh.jpg)
+    ![crt.sh](image/crt.sh.jpg)
 
-  通过这个网站搜索证书信息 ( 不知道这个和上面哪个信息更准确......) 。随便点开一个 ID 查看内容信息, 显示了完整的证书信息, 截图如下:
+    通过这个网站搜索证书信息 ( 不知道这个和上面哪个信息更准确......) 。随便点开一个 ID 查看内容信息, 显示了完整的证书信息, 截图如下:
 
-  ![crt.sh1](image/crt.sh1.jpg)
+    ![crt.sh1](image/crt.sh1.jpg)
 
 
 
-- **Censys.io**
+  - **Censys.io**
 
-  Censys.io是scans.io所发布的数据子集的访问接口，它可以通过证书中的关键字来进行搜索，而这通常会帮助我们搜索出新的子域名:
+    Censys.io是scans.io所发布的数据子集的访问接口，它可以通过证书中的关键字来进行搜索，而这通常会帮助我们搜索出新的子域名:
 
-  ![censys](image/censys.jpg)
+    ![censys](image/censys.jpg)
 
 
 
@@ -169,47 +169,46 @@
 
     ​		总体上说 , AXFR 得到的信息比起之前的方法少了很多, 在该应用场景下并不是很合适。
 
+- **其他信息收集方法**
+  - **Cymon 查询域名**
 
-
-- **Cymon 查询域名**
-
-  ![cymon](image/cymon.jpg)
-
-
-
-- **VirusTotal 查询域名**
-
-  VirusTotal的 search 可以查询域名 , 结果如下:
-
-  ![virustotal](image/virustotal.png)
-
-  KALI 上 whois 测试一下:
-
-  ![whois](image/whois.jpg)
-
-  得到了 zone transfer test online 上面的 ns1~ ns4 的信息。nslookup 也测试了一下, 这里就不再截图。除此之外, VirusTotal 还返回如下信息:
-
-  ![virustotal](image/virustotal.jpg)
-
-  点击 `More` 可以查看更多的信息。简单统计了一下 (不断点开 `More`), 发现共有 100 个子域名(不知道是不是只列出了 100 个......) 
+    ![cymon](image/cymon.jpg)
 
 
 
-- **DNSdumpster 查询**
+  - **VirusTotal 查询域名**
 
-  DNSdumpster 网址如下:
+    VirusTotal的 search 可以查询域名 , 结果如下:
 
-  ```
-  https://dnsdumpster.com/
-  ```
+    ![virustotal](image/virustotal.png)
 
-  个人感觉 DNSdumpster 的内容更丰富 , 不仅列出主机名和 IP , 而且还进行了分类(DNS Servers、MX Records、TXT Records、Host Records (A)), 甚至列出服务器的系统系列、地理位置。
+    KALI 上 whois 测试一下:
 
-  ![dnsdumpster](image/dnsdumpster.jpg)
+    ![whois](image/whois.jpg)
 
-  ![qq.com](image/qq.com.png)
+    得到了 zone transfer test online 上面的 ns1~ ns4 的信息。nslookup 也测试了一下, 这里就不再截图。除此之外, VirusTotal 还返回如下信息:
 
-  简单地数了一下, 统计信息中共有 127 个域名。
+    ![virustotal](image/virustotal.jpg)
+
+    点击 `More` 可以查看更多的信息。简单统计了一下 (不断点开 `More`), 发现共有 100 个子域名(不知道是不是只列出了 100 个......) 
+
+
+
+  - **DNSdumpster 查询**
+
+    DNSdumpster 网址如下:
+
+    ```
+    https://dnsdumpster.com/
+    ```
+
+    个人感觉 DNSdumpster 的内容更丰富 , 不仅列出主机名和 IP , 而且还进行了分类(DNS Servers、MX Records、TXT Records、Host Records (A)), 甚至列出服务器的系统系列、地理位置。
+
+    ![dnsdumpster](image/dnsdumpster.jpg)
+
+    ![qq.com](image/qq.com.png)
+
+    简单地数了一下, 统计信息中共有 127 个域名。
 
 
 
@@ -429,6 +428,16 @@
     显示结果共有 703 条。
 
 
+  - **ESD**
+    KALI中安装 ESD:
+    ```
+    pip3 install esd
+    ```
+    开始枚举:
+    ```
+    ESD qq.com
+    ```
+    返回结果有 1300 多条。
 
   - **firece**
 
