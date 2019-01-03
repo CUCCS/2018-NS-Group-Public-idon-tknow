@@ -6,15 +6,15 @@
 
 **来自百度官方的信息：**
 
-![财务报表](image02\财务报表.PNG)
+![财务报表](image02/财务报表.PNG)
 
-![财务报告](image02\财务报告.PNG)
+![财务报告](image02/财务报告.PNG)
 
 **robots.txt：**
 
 baidu禁止的爬虫：
 
-![robots_txt](image02\robots_txt.PNG)
+![robots_txt](image02/robots_txt.PNG)
 
 **网站备份压缩文件：**
 
@@ -32,7 +32,7 @@ baidu禁止的爬虫：
 
 **维基百科：**
 
-![维基百科](image02\维基百科.PNG)
+![维基百科](image02/维基百科.PNG)
 
 **Google Hacking：**（bing搜索语法相似）
 
@@ -48,15 +48,15 @@ site:baidu.com
 
 就可以了。报告可以直接下载。
 
-![zoomeye](image02\zoomeye.PNG)
+![zoomeye](image02/zoomeye.PNG)
 
 **佛法fofa：**fofa搜索语法：和google类似，增加筛选条件和查询
 
-![fofa](image02\fofa.PNG)
+![fofa](image02/fofa.PNG)
 
 **天眼查：**
 
-![天眼查](image02\天眼查.PNG)
+![天眼查](image02/天眼查.PNG)
 
 ### 3.其他工具辅助：
 
@@ -82,7 +82,7 @@ MarkMonitor公司
 
 abusecomplaints@markmonitor.com
 
-![whois](image02\whois.PNG)
+![whois](image02/whois.PNG)
 
 **dig：**（nslookup同理）
 
@@ -96,9 +96,9 @@ TTL：67跳（？）
 
 也可以通过MySSL网站来进行检测：
 
-![CDN](image02\CDN.PNG)
+![CDN](image02/CDN.PNG)
 
-![dig](image02\dig.PNG)
+![dig](image02/dig.PNG)
 
 递归查询域名：baidu域名解析服务器如下图所示。
 
@@ -106,15 +106,15 @@ TTL：67跳（？）
 dig +trace baidu.com
 ```
 
-![递归dig](image02\递归dig.PNG)
+![递归dig](image02/递归dig.PNG)
 
 别名CNAME：非权威应答
 
-![CNAME](image02\CNAME.PNG)
+![CNAME](image02/CNAME.PNG)
 
 **站长之家:**
 
-![站长之家](image02\站长之家.PNG)
+![站长之家](image02/站长之家.PNG)
 
 
 

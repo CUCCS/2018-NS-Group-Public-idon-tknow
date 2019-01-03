@@ -38,7 +38,7 @@ intext:password "Login Info" filetype:txt
 
 在一个医药网站上的wp-content目录下，有一个上传的目录uploads，里面不知道为什么记录了1password的一个记录密码的文本1Password-text-file.txt，基本上所有的网站的账号密码都存在这个txt中ctrl F：find Baidu在全页面搜索得到一个百度网盘的账户名和密码：可以登陆进去，为了不触犯法律法规。没有进行进一步操作。
 
-![baidu admin](image02\baidu admin.PNG)
+![baidu admin](image02/baidu admin.PNG)
 
 5.Search:
 
@@ -82,4 +82,4 @@ intitle:ProFTPD Admin - V1.04
 
 ## 二.普通谷歌搜索：
 
-![intext-关键词](image02\intext-关键词.PNG)
+![intext-关键词](image02/intext-关键词.PNG)
